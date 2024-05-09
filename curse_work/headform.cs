@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace curse_work
 {
     public partial class headform : Form
     {
+        private SqlConnection sqlConnection = null;
         public headform()
         {
             InitializeComponent();
@@ -26,10 +24,7 @@ namespace curse_work
         }
 
         List<Vakans> vvv = new List<Vakans>();
-        private void show_rezume_but_Click(object sender, EventArgs e)
-        {
-            
-        }
+
 
         public void add_but_Click(object sender, EventArgs e)
         {
@@ -98,6 +93,9 @@ namespace curse_work
 
         private void headform_Load(object sender, EventArgs e)
         {
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database1"].ConnectionString);
+            sqlConnection.Open();
+        
             // Выставляю значение "Неважно" для комбобоксов вкладки "Вакансии"
             otrasl_comboBox.SelectedIndex = 0;
             opyt_comboBox.SelectedIndex = 0;
