@@ -95,7 +95,7 @@ namespace curse_work
                 reebot_table();
             }
         }
-
+        //ttt
         private void headform_Load(object sender, EventArgs e)
         {
             // Выставляю значение "Неважно" для комбобоксов вкладки "Вакансии"
